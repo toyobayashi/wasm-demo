@@ -1,2 +1,3 @@
 .vscode/settings.json
 dist
+deps/aes/aes.a

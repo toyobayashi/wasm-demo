@@ -1,4 +1,4 @@
-#include "aes/aes.h"
+#include "aes.hpp"
 #include "crypto.hpp"
 #include <cstddef>
 #include <stdexcept>
@@ -84,23 +84,15 @@ std::vector<uint8_t> dec(const std::vector<uint8_t>& data,
 
   size_t l = data.size();
   std::vector<uint8_t> dataCopy = data;
-  // uint8_t* encrypt = new uint8_t[l];
-  // memcpy(encrypt, data.data(), l);
 
   struct AES_ctx ctx;
   AES_init_ctx_iv(&ctx, key.data(), iv.data());
   AES_CBC_decrypt_buffer(&ctx, dataCopy.data(), l);
 
-  // uint8_t* out = new uint8_t[l + 1];
-  // memcpy(out, encrypt, l);
-  // out[l] = 0;
   size_t realLength = pkcs7cut(dataCopy.data(), l);
-  std::cout << realLength << "\n";
   std::vector<uint8_t> res(realLength);
   res.assign(dataCopy.begin(), dataCopy.begin() + realLength);
 
-  // delete[] encrypt;
-  // delete[] out;
   return res;
 }
 

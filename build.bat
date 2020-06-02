@@ -1,10 +1,6 @@
 @echo off
 
 set mode=
-set arch=
-set dll=OFF
-set staticcrt=false
-set test=false
 
 :next-arg
 if "%1"=="" goto args-done
@@ -20,9 +16,13 @@ if "%mode%" == "" set mode=Release
 
 echo Mode: %mode%
 
+cd .\deps\aes
+make lib CC=emcc LD=emcc AR=emar AES256=1
+cd ..\..
+
 set def=-DAES256=1 -DCBC=1
-set options=-s DISABLE_EXCEPTION_CATCHING=0 --bind -Wall %def% -std=c++11
-set src=.\src\crypto.cpp .\src\wasm.cpp .\src\aes\aes.c
+set options=-s DISABLE_EXCEPTION_CATCHING=0 --bind -Wall %def% -std=c++11 -Ideps/aes
+set src=.\src\crypto.cpp .\src\wasm.cpp .\deps\aes\aes.a
 set CC=emcc
 set CXX=em++
 
@@ -31,6 +31,6 @@ if /i "%mode%"=="debug" (
   echo %CXX% %src% -o .\dist\crypto.js %options% -g
   %CXX% %src% -o .\dist\crypto.js %options% -g
 ) else (
-  echo %CXX% %src% -o .\dist\crypto.js %options% -Os -O3
-  %CXX% %src% -o .\dist\crypto.js %options% -Os -O3
+  echo %CXX% %src% -o .\dist\crypto.js %options% -O3
+  %CXX% %src% -o .\dist\crypto.js %options% -O3
 )

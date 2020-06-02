@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 #include <exception>
 #include "emscripten/bind.h"
 #include "emscripten/val.h"

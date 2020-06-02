@@ -2,7 +2,8 @@
   "env": {
     "includePath": [
       "${default}",
-      "C:\\Projects\\emsdk\\upstream\\emscripten\\system\\include"
+      "C:\\Projects\\emsdk\\upstream\\emscripten\\system\\include",
+      "${workspaceFolder}/deps/aes"
     ],
     "clPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.28314\\bin\\Hostx64\\x64\\cl.exe",
     "gccPath": "/usr/bin/gcc",
