@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <script>
+    var Module = {
+      onRuntimeInitialized: function() {
+        console.log(Object.keys(Module))
+        console.log(Module.test([55,56,57, 0]));
+      }
+    };
+  </script>
+  <script src="dist/crypto.js"></script>
+  <script>
+    console.log(Object.keys(Module))
+  </script>
+</html>
