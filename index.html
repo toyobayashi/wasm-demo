@@ -4,7 +4,13 @@
     var Module = {
       onRuntimeInitialized: function() {
         console.log(Object.keys(Module))
-        console.log(Module.test([55,56,57, 0]));
+        const secret = Module.enc("hello world", "12345678901234561234567890123456", "1234567890123456")
+        console.log(secret);
+        const decoder = new TextDecoder()
+        const plain = Module.dec(secret, "12345678901234561234567890123456", "1234567890123456")
+        console.log(plain);
+        // [174, 192, 194, 50, 180, 186, 168, 214, 219, 105, 219, 124, 47, 24, 141, 106]
+        console.log(decoder.decode(plain));
       }
     };
   </script>

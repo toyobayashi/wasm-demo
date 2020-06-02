@@ -2,12 +2,12 @@
   "env": {
     "includePath": [
       "${default}",
-      "E:\\Github\\emsdk\\upstream\\emscripten\\system\\include"
+      "C:\\Projects\\emsdk\\upstream\\emscripten\\system\\include"
     ],
     "clPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.28314\\bin\\Hostx64\\x64\\cl.exe",
     "gccPath": "/usr/bin/gcc",
     "clangPath": "/usr/bin/clang",
-    "defines": ["AES256=1"]
+    "defines": ["AES256=1", "CBC=1"]
   },
   "configurations": [
     {

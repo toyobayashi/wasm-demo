@@ -20,16 +20,17 @@ if "%mode%" == "" set mode=Release
 
 echo Mode: %mode%
 
-set def=-DAES256=1
-set src=.\src\aes\aes.c .\src\crypto.cpp
+set def=-DAES256=1 -DCBC=1
+set options=-s DISABLE_EXCEPTION_CATCHING=0 --bind -Wall %def% -std=c++11
+set src=.\src\crypto.cpp .\src\wasm.cpp .\src\aes\aes.c
 set CC=emcc
 set CXX=em++
 
 if not exist .\dist mkdir .\dist
 if /i "%mode%"=="debug" (
-  echo %CXX% %src% -o .\dist\crypto.js --bind -g %def% -std=c++11 
-  %CXX% %src% -o .\dist\crypto.js --bind -g %def% -std=c++11
+  echo %CXX% %src% -o .\dist\crypto.js %options% -g
+  %CXX% %src% -o .\dist\crypto.js %options% -g
 ) else (
-  echo %CXX% %src% -o .\dist\crypto.js --bind -O3 %def% -std=c++11
-  %CXX% %src% -o .\dist\crypto.js --bind -O3 %def% -std=c++11
+  echo %CXX% %src% -o .\dist\crypto.js %options% -Os -O3
+  %CXX% %src% -o .\dist\crypto.js %options% -Os -O3
 )
