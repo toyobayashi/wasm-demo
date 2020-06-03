@@ -48,7 +48,7 @@ std::vector<uint8_t> enc(const std::vector<uint8_t>& data,
   } else {
       encryptLength = dataLength;
       dataBuf = new uint8_t[dataLength];
-      for (int i = 0; i < dataLength; i++) {
+      for (size_t i = 0; i < dataLength; i++) {
           dataBuf[i] = strBuf[i];
       }
   }
