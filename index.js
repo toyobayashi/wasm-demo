@@ -1,18 +1,9 @@
 (function () {
-  var Module = typeof window === 'undefined' ? require('./dist/crypto.js') : window.Module;
+  var Module = typeof window === 'undefined' ? require('./build/crypto.js') : window.Module;
   Module.onRuntimeInitialized = function () {
-    console.log(Object.keys(Module));
-
-    var key = '12345678901234561234567890123456';
-    var iv = '1234567890123456';
-    var str = 'hello world';
-    var secret = Module.enc(str, key, iv);
-    console.log(secret);
-    var decoder = new TextDecoder();
-    var plain = Module.dec(secret, key, iv);
-    console.log(plain);
-    var plainString = decoder.decode(plain);
-    console.log(plainString);
+    const b64 = Module.encryptJson({ a: 1, b: '2', c: null });
+    console.log(b64);
+    const origin = Module.decryptJson(b64);
+    console.log(origin);
   };
-  console.log(Object.keys(Module));
 })();
