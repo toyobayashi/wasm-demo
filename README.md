@@ -12,7 +12,7 @@ request:
 
 `{"a":1,"b":"2","c":true,"d":["list","item"],"e":null}`
 
-==== Client `Module.encryptJson(request)` ====>
+==== Client `Module.encryptJson(request: any): base64 string` ====>
 
 `4921999568155729cEgfKvCXPwElpWXWr9xxzFirFco4u9Nai0/VZOa8Q8x3pCekR5vWmuaW+9hvtT3y`
 
@@ -20,9 +20,22 @@ response:
 
 `7291012914083737w75+D0LFkJTqi1rk26KvZwfKpRgdjgO0COGijyUlNdTr3W16ROSkQWQHLpffqG4Izm6wwJmyAlRIYveC5lc0C/uWdcl4f4ozAzSM8BWJ4wk=`
 
-==== Client `Module.decryptJson(response)` ====>
+==== Client `Module.decryptJson(response: base64 string): JavaScript Object` ====>
 
-`{"code":0,data:{"a":1,"b":"2","c":true,"d":["list","item"],"e":null},"error":null,"message":"OK"}`
+``` js
+{
+  code: 0,
+  data: {
+    a: 1,
+    b: '2',
+    c: true,
+    d: ['list', 'item'],
+    e: null
+  },
+  error: null,
+  message: 'OK'
+}
+```
 
 ## Require:
 
