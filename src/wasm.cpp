@@ -27,6 +27,8 @@ static std::string encryptJson(const emscripten::val& json) {
   return res;
 }
 
+#ifndef WASM_DISABLE_DECRYPT
+
 static emscripten::val decryptRawData(const std::string& b64) {
   std::vector<uint8_t> buf;
   try {
@@ -53,9 +55,13 @@ static emscripten::val decryptJson(const std::string& b64) {
   }
 }
 
+#endif
+
 EMSCRIPTEN_BINDINGS(strtest) {
   emscripten::function("encryptRawData", encryptRawData);
   emscripten::function("encryptJson", encryptJson);
+#ifndef WASM_DISABLE_DECRYPT
   emscripten::function("decryptRawData", decryptRawData);
   emscripten::function("decryptJson", decryptJson);
+#endif
 }
