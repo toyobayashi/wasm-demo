@@ -89,7 +89,7 @@ static std::string to_b64(const std::vector<uint8_t>& buffer) {
 
 std::string encryptRawData(const std::vector<uint8_t>& data) {
   std::string iv = createRandomNumberString(16);
-  std::string key = CRYPTO_SECRET_KEY;
+  std::string key = CRYPTO_ENC_KEY;
   std::vector<uint8_t> raw = enc(data, std::vector<uint8_t>(key.begin(), key.end()), std::vector<uint8_t>(iv.begin(), iv.end()));
   std::string res = iv + to_b64(raw);
   return res;
@@ -153,7 +153,7 @@ static std::vector<uint8_t> from_b64(const std::string& b64) {
 
 std::vector<uint8_t> decryptRawData(const std::string& b64) {
   std::string iv = b64.substr(0, 16);
-  std::string key = CRYPTO_SECRET_KEY;
+  std::string key = CRYPTO_DEC_KEY;
   std::vector<uint8_t> raw = from_b64(b64.substr(16));
   return dec(raw, std::vector<uint8_t>(key.begin(), key.end()), std::vector<uint8_t>(iv.begin(), iv.end()));
 }

@@ -20,7 +20,6 @@ cd .\deps\aes
 make lib CC=emcc LD=emcc AR=emar AES256=1
 cd ..\..
 
-cd build
+if not exist temp mkdir temp
 echo make %mode%=1
 make %mode%=1
-cd ..

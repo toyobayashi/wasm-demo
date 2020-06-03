@@ -1,0 +1,21 @@
+{
+  "name": "wasm-demo",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "build": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "koa": "^2.12.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "node-addon-api": "^3.0.0"
+  },
+  "devDependencies": {
+    "node-gyp": "^5.1.1"
+  }
+}

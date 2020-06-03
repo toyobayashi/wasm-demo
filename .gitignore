@@ -1,5 +1,7 @@
 .vscode/settings.json
-dist
-deps/aes/aes.a
-build/*
-!build/Makefile
+/dist
+/deps/aes/aes.a
+/build
+node_modules
+package-lock.json
+/temp

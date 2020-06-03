@@ -4,12 +4,14 @@
       "${default}",
       "C:\\Projects\\emsdk\\upstream\\emscripten\\system\\include",
       "E:\\GitHub\\emsdk\\upstream\\emscripten\\system\\include",
+      "${env:HOME}/AppData/Local/node-gyp/Cache/12.17.0/include/node",
+      "${workspaceFolder}/node_modules/node-addon-api",
       "${workspaceFolder}/deps/aes"
     ],
     "clPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.28314\\bin\\Hostx64\\x64\\cl.exe",
     "gccPath": "/usr/bin/gcc",
     "clangPath": "/usr/bin/clang",
-    "defines": ["AES256=1", "CBC=1", "CRYPTO_SECRET_KEY=\"12345678901234561234567890123456\""]
+    "defines": ["AES256=1", "CBC=1", "CRYPTO_DEC_KEY=\"\"", "CRYPTO_ENC_KEY=\"\""]
   },
   "configurations": [
     {

@@ -2,18 +2,21 @@
 
 Require:
 
-* Emscripten compiler tool chain in `PATH` environment variable (emcc / em++ / emar / python / ...)
+* Node.js
 
-* Make for Windows / Make
+* System C/C++ compiler tool chain (cl.exe / gcc / clang)
 
 ## Build
 
-``` bat
-call .\build.bat
+``` bash
+$ npm install
+$ npm run build
 ```
 
 ## Run
 
 ```
-node index
+node start
 ```
+
+`http://127.0.0.1:8096`
