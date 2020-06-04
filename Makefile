@@ -9,14 +9,15 @@ ARFLAGS      = rcs
 LDFLAGS      = -Wall
 DEFINES      = -DAES256=1 -DCBC=1 -DCRYPTO_ENC_KEY=\"12345678901234561234567890123456\" -DCRYPTO_DEC_KEY=\"11111222223333344444555556666677\"
 COMMONFLAGS  = $(LDFLAGS) -s DISABLE_EXCEPTION_CATCHING=0 --bind -I$(ROOT)/deps/aes $(DEFINES)
-CFLAGS       = $(COMMONFLAGS)
-CXXFLAGS     = $(COMMONFLAGS) -std=c++11
 
-ifdef DEBUG
-COMMONFLAGS += -g
+ifdef Debug
+COMMONFLAGS += -g4 --source-map-base http://127.0.0.1:8096/
 else
 COMMONFLAGS += -O3
 endif
+
+CFLAGS       = $(COMMONFLAGS)
+CXXFLAGS     = $(COMMONFLAGS) -std=c++11
 
 default: lib
 
@@ -47,6 +48,7 @@ lib : $(OUT)/crypto.js
 	echo $(COMMONFLAGS)
 	copy /Y $(OUT)\crypto.js .\public\crypto.js
 	copy /Y $(OUT)\crypto.wasm .\public\crypto.wasm
+	copy /Y $(OUT)\crypto.wasm.map .\crypto.wasm.map
 
 clean:
 	rd /s /q $(OUT)
