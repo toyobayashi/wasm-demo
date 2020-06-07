@@ -17,6 +17,8 @@ target_link_options(${EXE_NAME} PRIVATE --bind -s ALLOW_MEMORY_GROWTH=1)
 
 set_target_properties(${EXE_NAME} PROPERTIES CXX_STANDARD 11)
 
+# set(CMAKE_EXECUTABLE_SUFFIX ".mjs")
+
 if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
   foreach(var
     CMAKE_C_FLAGS_DEBUG
